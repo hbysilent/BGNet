@@ -21,7 +21,7 @@ class KITTIDataset(Dataset):
             assert self.disp_filenames is not None
     def load_path(self, list_filename):
         lines = read_all_lines(list_filename)
-        splits = [line.split() for line in lines]
+        splits = [line.split() for line in lines] #line.split()以空格为分隔符
         left_images = [x[0] for x in splits]
         right_images = [x[1] for x in splits]
         if len(splits[0]) == 2:  # ground truth not available

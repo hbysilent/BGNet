@@ -15,7 +15,7 @@ def mean_std_transform(img,flag):
     width = size[1]
     temp_data = np.zeros([3, height, width], 'float32')
     
-    img = np.ascontiguousarray(img)
+    img = np.ascontiguousarray(img) #函数将一个内存不连续存储的数组转换为内存连续存储的数组，使得运行速度更快
     r = img[:, :, 0]/255.0
     g = img[:, :, 1]/255.0
     b = img[:, :, 2]/255.0
@@ -33,7 +33,7 @@ def mean_std_transform(img,flag):
     
     img = temp_data[0: 3, :, :]
     #img = np.expand_dims(img, 0)
-    img = torch.from_numpy(img)
+    img = torch.from_numpy(img) #numpy数组转成tensor张量
     return img
 
 __imagenet_stats = {'mean': [0.485, 0.456, 0.406],
@@ -57,7 +57,7 @@ def read_all_lines(filename):
     return lines
 
 
-# read an .pfm file into numpy array, used to load SceneFlow disparity files
+# read an .pfm file into numpy array, used to load SceneFlow disparity files 将 .pfm 文件读入 numpy 数组，用于加载 SceneFlow 视差文件
 def pfm_imread(filename):
     file = open(filename, 'rb')
     color = None
